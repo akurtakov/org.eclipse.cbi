@@ -25,10 +25,10 @@ jobs:
 
   autolabel:
     if: github.event_name == 'pull_request'
-      runs-on: ubuntu-latest
-        steps:
-          - uses: release-drafter/release-drafter@v7
-            with:
-              disable-releaser: true   # only run the labeler, skip draft update
-            env:
-              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: release-drafter/release-drafter@v7
+        with:
+          disable-releaser: true   # only run the labeler, skip draft update
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
