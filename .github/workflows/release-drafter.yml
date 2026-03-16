@@ -6,7 +6,7 @@ on:
     branches:
       - main
   # pull_request event is required only for autolabeler
-  pull_request:
+  pull_request_target:
     # Only following types are handled by the action, but one can default to all as well
     types: [opened, reopened, synchronize]
 
@@ -24,11 +24,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   autolabel:
-    if: github.event_name == 'pull_request'
+    if: github.event_name == 'pull_request_target'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
-      - uses: release-drafter/release-drafter@v7
-        with:
-          disable-releaser: true   # only run the labeler, skip draft update
+      - uses: release-drafter/release-drafter@3a7fb5c85b80b1dda66e1ccb94009adbbd32fce3 # v7.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
