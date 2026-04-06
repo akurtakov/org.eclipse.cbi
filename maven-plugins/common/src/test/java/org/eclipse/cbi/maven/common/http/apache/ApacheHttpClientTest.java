@@ -13,7 +13,6 @@ import java.nio.file.Path;
 
 import org.apache.http.entity.ContentType;
 import org.eclipse.cbi.common.test.util.SampleFilesGenerators;
-import org.eclipse.cbi.maven.common.test.util.NullJettyLogger;
 import org.eclipse.cbi.maven.common.test.util.NullLog;
 import org.eclipse.cbi.maven.http.CompletionListener;
 import org.eclipse.cbi.maven.http.HttpClient;
@@ -27,10 +26,8 @@ import org.eclipse.jetty.server.NetworkConnector;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.AbstractHandler;
-import org.eclipse.jetty.util.log.Log;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.google.common.jimfs.Configuration;
@@ -44,11 +41,6 @@ import jakarta.servlet.http.HttpServletResponse;
 public class ApacheHttpClientTest {
 
 	private NullLog log;
-
-	@BeforeClass
-	public static void beforeClass() {
-		Log.setLog(new NullJettyLogger());
-	}
 
 	@Before
 	public void before() {
